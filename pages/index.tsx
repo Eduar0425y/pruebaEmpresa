@@ -9,13 +9,13 @@ const App = () => {
 
     <div>
 
-      <div className='position-absolute'>
+      <div className='position-absolute' id='header'>
 
         <HeaderPagIndex />
 
       </div>
 
-      <div className='top-0'>
+      <div className='top-0' id='banner'>
 
           <Banner />
           

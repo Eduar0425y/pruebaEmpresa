@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Movie } from '../models/Pelicula';
-import { API_KEY } from '../config';
-import axios from 'axios';
 import MovieDetails from './MovieDetails';
+import { peticionProxMovies } from '../services/ProxMovieService';
 
 
 
@@ -17,23 +16,7 @@ const proxMovies = () => {
 
     const fetchMovies = async () => {
 
-      const response = await axios.get(
-
-        'https://api.themoviedb.org/3/movie/upcoming?',
-
-        {
-
-          params: {
-
-            api_key: API_KEY,
-            language: 'es',
-            page: currentPage,
-
-          },
-
-        }
-
-      );
+      const response = await peticionProxMovies(currentPage);
 
       setMovies(response.data.results);
       setTotalPages(response.data.total_pages);
@@ -65,7 +48,7 @@ const proxMovies = () => {
 
         movies.map((movie) => (
 
-          <div className="card col-2 bg-transparent" style={{width: "14%", float: "left", height:"320px", margin: "10px", borderRadius: "10px", overflow: "hidden"}}>
+          <div className="card col-sm-2 bg-transparent" style={{float: "left", height:"320px", margin: "10px", borderRadius: "10px", overflow: "hidden"}}>
             
             
             <div key={movie.id} onClick={() => setSelectedMovie(movie)}>

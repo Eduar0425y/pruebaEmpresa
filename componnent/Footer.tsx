@@ -4,7 +4,7 @@ export default function footer(){
 
         <div className="row">
 
-            <center className="col-12" style={{marginTop: "50px", height: "50px"}}>© Eduar Avendaño</center>
+            <center className="col-sm-12" style={{marginTop: "50px", height: "50px"}}>© Eduar Avendaño</center>
 
         </div>
     );

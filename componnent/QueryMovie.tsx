@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Movie } from '../models/Pelicula';
-import { API_KEY } from '../config';
-import axios from 'axios';
 import MovieDetails from './MovieDetails';
+import { peticionQuery } from '../services/QueryService';
 
 
 interface Props {
@@ -20,11 +19,7 @@ const MovieList: React.FC<Props> = ({ query }) => {
 
     const fetchMovies = async () => {
 
-      const response = await axios.get(
-
-        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}&language=es`
-
-      );
+      const response = await peticionQuery(query);
 
       setMovies(response.data.results);
 
@@ -63,7 +58,7 @@ const MovieList: React.FC<Props> = ({ query }) => {
         
                 movies.map((movie) => (
         
-                  <div className="card col-2 bg-transparent" style={{width: "14%", float: "left", height:"320px", margin: "10px", borderRadius: "10px", overflow: "hidden"}}>
+                  <div className="card col-sm-2 bg-transparent" style={{float: "left", height:"320px", margin: "10px", borderRadius: "10px", overflow: "hidden"}}>
                     
                     <div key={movie.id} onClick={() => setSelectedMovie(movie)}>
                       

@@ -12,7 +12,7 @@ const App = () => {
 
       <div className="row list-unstyled fw-normal pb-2 small">
 
-          <div className="col-2 bd-links-span-all lh-lg">
+          <div className="col-sm-2 bd-links-span-all lh-lg">
 
             <h3>Generos</h3>
 
@@ -76,7 +76,7 @@ const App = () => {
           
           </div>
             
-          <div className="col">
+          <div className="col-sm">
 
             <GenreMovies idGenre={genreMovies} genero={genreName}/>
 

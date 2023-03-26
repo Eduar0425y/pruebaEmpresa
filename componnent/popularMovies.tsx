@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Movie } from '../models/Pelicula';
-import { API_KEY } from '../config';
-import axios from 'axios';
 import MovieDetails from './MovieDetails';
+import { peticionPopularMovies } from '../services/PopularMoviesService';
 
 
 
@@ -17,23 +16,7 @@ const MostPopularMovies = () => {
 
     const fetchMovies = async () => {
 
-      const response = await axios.get(
-
-        'https://api.themoviedb.org/3/movie/popular',
-
-        {
-
-          params: {
-
-            api_key: API_KEY,
-            language: 'en-US',
-            page: currentPage,
-
-          },
-
-        }
-
-      );
+      const response = await peticionPopularMovies(currentPage);
 
       setMovies(response.data.results);
       setTotalPages(response.data.total_pages);
@@ -45,36 +28,13 @@ const MostPopularMovies = () => {
   }, [currentPage]);
 
 
-  const handleMovieClick = async (movieId: number) => {
-
-    const response = await axios.get(
-
-      `https://api.themoviedb.org/3/movie/${movieId}`,
-
-      {
-
-        params: {
-
-          api_key: API_KEY,
-          language: 'es',
-
-        },
-
-      }
-
-    );
-
-    setSelectedMovie(response.data);
-
-  };
-
   return (
 
     <div style={{width : "100%", marginTop: "5%"}}>
 
       <center>
 
-        <h2 style={{marginBottom: "5%"}}>Peliculas más populares</h2>
+        <h2 id='titulo' style={{marginBottom: "5%"}}>Peliculas más populares</h2>
 
       </center>
       
@@ -88,7 +48,7 @@ const MostPopularMovies = () => {
 
           movies.map((movie) => (
 
-            <div className="card col-2 bg-transparent" style={{width: "14%", float: "left", height:"320px", margin: "10px", borderRadius: "10px", overflow: "hidden"}}>
+            <div className="card col-sm-2 bg-transparent" style={{ float: "left", height:"320px", margin: "10px", borderRadius: "10px", overflow: "hidden"}}>
               
               <div key={movie.id} onClick={() => setSelectedMovie(movie)}>
                 
