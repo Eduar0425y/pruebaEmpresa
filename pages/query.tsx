@@ -21,6 +21,10 @@ const AppQuery: React.FC = () => {
 
       <HeaderPag />
 
+      <div id="banner"></div>
+      <div id="titulo"></div>
+      <div id="header"></div>
+
       <form onSubmit={handleSubmit}>
 
         <div className="input-group mb-3" >

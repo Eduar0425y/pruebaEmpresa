@@ -9,6 +9,10 @@ export default function app (){
 
         <div>
 
+        <div id="banner"></div>
+        <div id="titulo"></div>
+        <div id="header"></div>
+
             <HeaderPag />
 
             <GenerosMovies />

@@ -8,6 +8,10 @@ const App = () => {
 
     <div>
 
+      <div id="banner"></div>
+      <div id="titulo"></div>
+      <div id="header"></div>
+
     <HeaderPag />
     
       <div id='cont'>
